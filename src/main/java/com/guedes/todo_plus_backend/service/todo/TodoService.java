@@ -1,14 +1,9 @@
-package com.guedes.todo_plus_backend.service;
+package com.guedes.todo_plus_backend.service.todo;
 
 import com.guedes.todo_plus_backend.actions.FunctionsWhatsapp;
-import com.guedes.todo_plus_backend.entity.Todo;
-import com.guedes.todo_plus_backend.repository.TodoRepository;
-import org.hibernate.annotations.Parameter;
+import com.guedes.todo_plus_backend.entity.todo.Todo;
+import com.guedes.todo_plus_backend.repository.todo.TodoRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

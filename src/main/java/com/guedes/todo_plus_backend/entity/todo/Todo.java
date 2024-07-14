@@ -1,4 +1,4 @@
-package com.guedes.todo_plus_backend.entity;
+package com.guedes.todo_plus_backend.entity.todo;
 
 import jakarta.persistence.*;
 

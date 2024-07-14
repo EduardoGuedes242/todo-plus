@@ -1,8 +1,7 @@
 package com.guedes.todo_plus_backend.controller;
 
-import com.guedes.todo_plus_backend.entity.Todo;
-import com.guedes.todo_plus_backend.repository.TodoRepository;
-import com.guedes.todo_plus_backend.service.TodoService;
+import com.guedes.todo_plus_backend.entity.todo.Todo;
+import com.guedes.todo_plus_backend.service.todo.TodoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
