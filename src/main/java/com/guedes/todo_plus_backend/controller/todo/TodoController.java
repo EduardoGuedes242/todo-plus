@@ -1,4 +1,4 @@
-package com.guedes.todo_plus_backend.controller;
+package com.guedes.todo_plus_backend.controller.todo;
 
 import com.guedes.todo_plus_backend.entity.todo.Todo;
 import com.guedes.todo_plus_backend.service.todo.TodoService;
