@@ -15,11 +15,8 @@ public class UserService {
   @Autowired
   UserRepository userRepository;
 
-
-
-
   public void createUser(User user) {
-    Optional<User> userFind = userRepository.findByEmail(user.getEmail());
+    User userFind = userRepository.findByEmail(user.getEmail());
     if(userFind != null) {
       throw new LoginExistenteException();
     }
