@@ -1,13 +1,10 @@
 package com.guedes.todo_plus_backend.service.user;
 
 import com.guedes.todo_plus_backend.entity.user.User;
-import com.guedes.todo_plus_backend.exceptions.LoginExistenteException;
 import com.guedes.todo_plus_backend.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -16,10 +13,6 @@ public class UserService {
   UserRepository userRepository;
 
   public void createUser(User user) {
-    User userFind = userRepository.findByEmail(user.getEmail());
-    if(userFind != null) {
-      throw new LoginExistenteException();
-    }
     userRepository.save(user);
   }
 

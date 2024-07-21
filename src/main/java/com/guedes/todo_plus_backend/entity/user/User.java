@@ -2,6 +2,7 @@ package com.guedes.todo_plus_backend.entity.user;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -9,12 +10,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "tdp$user")
-public class User implements UserDetails  {
+public class User  implements UserDetails{
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
   private String email;
   private String password;
+  private UserRole role;
 
   public Long getId() {
     return id;
@@ -37,42 +39,44 @@ public class User implements UserDetails  {
     this.email = email;
   }
 
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of();
-  }
-
   public String getPassword() {
     return password;
+  }
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    if(this.role == UserRole.ADMIN) {
+      return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+    }
+    return List.of(new SimpleGrantedAuthority("ROLE_USER"));
   }
 
   @Override
   public String getUsername() {
-    return "";
+    return getEmail();
   }
 
   @Override
   public boolean isAccountNonExpired() {
-    return UserDetails.super.isAccountNonExpired();
+    return true;
   }
 
   @Override
   public boolean isAccountNonLocked() {
-    return UserDetails.super.isAccountNonLocked();
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return UserDetails.super.isCredentialsNonExpired();
+    return true;
   }
 
   @Override
   public boolean isEnabled() {
-    return UserDetails.super.isEnabled();
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
+    return true;
   }
 
 }
